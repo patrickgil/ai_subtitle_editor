@@ -5,10 +5,7 @@ Main file that implements the complete functionality
 # =============================================================================================
 # =========IMPORTS=============================================================================
 # Local imports
-# import api_calls
-# import lang_codes
-# import gather_srt_files
-
+import gather_srt_files as srt
 # Global imports
 import sys
 
@@ -20,4 +17,6 @@ FILENAME = sys.argv[1]
 # =========FUNCTIONS===========================================================================
 
 if __name__ == "__main__":
-    ...
+    srt_language = srt.gather_langauge(FILENAME)
+    srt_lines = srt.read_file(FILENAME)
+    list_of_lines = srt.split_file(srt_lines)
