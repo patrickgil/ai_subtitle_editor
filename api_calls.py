@@ -18,16 +18,11 @@ GPT_VERSION = 'gpt-3.5-turbo'
 
 
 def call_gpt(input):
-    input = 'key'
-    return input
-
-
-completion = openai.ChatCompletion.create(
-    model=GPT_VERSION,
-    messages=[{
-            "role": "user",
-            "content": "Compose a poem that explains the concept of recursion in programming."},
-    ],
-)
-
-print(completion.choices[0].message)
+    chat_call = openai.ChatCompletion.create(
+        model=GPT_VERSION,
+        messages=[{
+                "role": "user",
+                "content": input},
+        ],
+    )
+    return chat_call.choices[0].message
