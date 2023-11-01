@@ -59,8 +59,8 @@ if __name__ == "__main__":
         for line in lines:
             srt_string += line
         if iteration > 0:
-            print('Waiting for 30 Seconds')
-            time.sleep(30)
+            print('Waiting for 5 Seconds')
+            time.sleep(5)
         print('Calling API: Call: {} out of {}'.format(iteration+1, total))
         call_api = api.call_gpt(message, srt_string)
         print('API Called Successfully')
