@@ -5,6 +5,7 @@ Module to convert .srt files to usable lists of lines
 # =============================================================================================
 # =========IMPORTS=============================================================================
 import sys
+import time
 import lang_codes as lang
 
 
@@ -16,7 +17,7 @@ import lang_codes as lang
 # =========FUNCTIONS===========================================================================
 
 
-def gather_langauge(filename):
+def gather_langauge(filename: str):
     if filename[-7] == '.':
         lang_string = filename[-6:-4]
         try:
@@ -34,12 +35,14 @@ def gather_langauge(filename):
     return langauge
 
 
-def read_file(filename):
+def read_file(filename: str):
     if '.srt' not in filename:
         sys.exit('The file input is not an .srt file. Aborting')
     elif '.srt' in filename:
         readfile = open(filename, 'r')
         lines = readfile.readlines()
+        time.sleep(5)
+        readfile.close()
     return lines
 
 
@@ -63,3 +66,10 @@ def split_file(lines):
         srt_lines.append(str)
         count += 1
     return line_lists
+
+
+def write_file(filename: str, lines: str):
+    writefile = open(filename, 'w')
+    writefile.write(lines)
+    time.sleep(5)
+    writefile.close()
