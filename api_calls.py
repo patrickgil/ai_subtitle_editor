@@ -17,12 +17,12 @@ GPT_VERSION = 'gpt-3.5-turbo'
 # =========FUNCTIONS===========================================================================
 
 
-def call_gpt(input):
-    chat_call = openai.ChatCompletion.create(
+def call_gpt(message_input: str, srt_input: str):
+    completion = openai.ChatCompletion.create(
         model=GPT_VERSION,
         messages=[{
                 "role": "user",
-                "content": input},
+                "content": message_input + srt_input},
         ],
     )
-    return chat_call.choices[0].message
+    return completion.choices[0].message.content
