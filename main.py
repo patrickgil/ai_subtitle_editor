@@ -55,8 +55,8 @@ if __name__ == "__main__":
     total = len(list_of_lines)
     start_time = time.time()
     for iteration, lines in enumerate(list_of_lines):
+        srt_string = ''
         for line in lines:
-            srt_string = ''
             srt_string += line
         if iteration > 0:
             print('Waiting for 30 Seconds')
