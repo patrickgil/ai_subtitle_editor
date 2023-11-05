@@ -7,7 +7,7 @@ Simple application to translate srt subtitle files using OpenAI's API
 ### Prerequisites
 
 - Python 3
-- An OpenAI API key is required (get one[here](https://platform.openai.com/account/api-keys))
+- An OpenAI API key is required (get one [here](https://platform.openai.com/account/api-keys))
 
 ### Installation
 
