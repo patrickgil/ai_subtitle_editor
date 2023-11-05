@@ -1,5 +1,7 @@
 '''
-Module storing Language codes
+Module storing the most common 639-1 ISO language codes
+    - https://www.andiamo.co.uk/resources/iso-language-codes/
+Dictionaries with both language and code as keys
 '''
 
 language_dict = {'Afrikaans': 'af',

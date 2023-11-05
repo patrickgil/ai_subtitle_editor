@@ -1,5 +1,10 @@
 '''
-Module to convert .srt files to usable lists of lines
+Module to read and write .srt files
+- Input language is determined from filename (user input)
+- The .srt file is read and parsed into a string of lines
+- Lines are split into 'blocks' of lines (50 lines per block)
+- Output string is written to new .srt file
+    - Filename is the same with different ISO language extention
 '''
 
 # =============================================================================================
@@ -7,7 +12,6 @@ Module to convert .srt files to usable lists of lines
 import sys
 import time
 import lang_codes as lang
-
 
 # =============================================================================================
 # =========CONSTANTS===========================================================================
@@ -18,6 +22,12 @@ import lang_codes as lang
 
 
 def gather_langauge(filename: str):
+    """
+    Function that takes a proper .srt filename and determines the ISO language code
+
+    :param filename: .srt filename (user input)
+    :return: language of subtitle in filename
+    """
     if filename[-7] == '.':
         lang_string = filename[-6:-4]
         try:
@@ -36,6 +46,12 @@ def gather_langauge(filename: str):
 
 
 def read_file(filename: str):
+    """
+    Function to read .srt files and return the lines
+
+    :param filename: .srt filename (user input)
+    :return: all subtitle lines (includes blank new lines)
+    """
     if '.srt' not in filename:
         sys.exit('The file input is not an .srt file. Aborting')
     elif '.srt' in filename:
@@ -47,6 +63,12 @@ def read_file(filename: str):
 
 
 def split_file(lines):
+    """
+    Function to split all subtitle lines into usable 'blocks' of 50 lines
+
+    :param lines: all subtitle lines from .srt files
+    :return: list of srt line 'blocks' (50 lines)
+    """
     count = 0
     start = 0
     total_lines = len(lines)
@@ -69,6 +91,13 @@ def split_file(lines):
 
 
 def write_file(filename: str, lines: str):
+    """
+    Function to write to .srt files
+
+    :param filename: output filename (same as input with different ISO language code)
+    :param lines: final string of lines (output from API call)
+    :return: None
+    """
     writefile = open(filename, 'w')
     writefile.write(lines)
     time.sleep(5)

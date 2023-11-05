@@ -1,5 +1,18 @@
 '''
-Main file that implements the complete functionality
+Central file used to call functions from external files.
+(OpenAI API error handling is not currently included)
+
+- The output filename is gathered from the input
+    - The output language is pre-defined as English: can be edited in Global Constants
+- The console output is printed
+    - Includes input name/language and output name/language
+- The message given to the API is pre-defined to simply ask for a translation from the
+  input language to the output language
+- The start time is recorded
+- A loop runs through the 'blocks' of lines from the srt file to send small requests to the API
+    - The output is appended to an initially empty string
+    - The current block being processed is ouput to the console
+- The output string is then printed to an .srt file
 '''
 
 # =============================================================================================
@@ -31,7 +44,7 @@ def create_filename(srt_language_code: str):
     return output_filename
 
 
-if __name__ == "__main__":
+def main():
     # Gather Language and Filename
     srt_language = srt.gather_langauge(FILENAME)
     srt_language_code = lang.language_dict[srt_language]
@@ -54,13 +67,14 @@ if __name__ == "__main__":
     # Each block contains 50 lines from the .srt file
     total = len(list_of_lines)
     start_time = time.time()
+    OUTPUT_STRING = ''
     for iteration, lines in enumerate(list_of_lines):
         srt_string = ''
         for line in lines:
             srt_string += line
         if iteration > 0:
-            print('Waiting for 5 Seconds')
-            time.sleep(5)
+            print('Waiting for 15 Seconds')
+            time.sleep(15)
         print('Calling API: Call: {} out of {}'.format(iteration+1, total))
         call_api = api.call_gpt(message, srt_string)
         print('API Called Successfully')
@@ -71,3 +85,7 @@ if __name__ == "__main__":
     print('Writing to file: {}'.format(output_file))
     srt.write_file(output_file, OUTPUT_STRING)
     print('File Write Successful')
+
+
+if __name__ == "__main__":
+    main()
