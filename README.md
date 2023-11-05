@@ -16,8 +16,10 @@ Simple application to translate srt subtitle files using OpenAI's API
 
 ### Usage
 
+Copy the necessary subtitle files into the same directory as the repo
+
 ```bash
-python main.py <srt filename>
+python main.py <filename.srt>
 ```
 
 #### Note
