@@ -37,6 +37,12 @@ OUTPUT_STRING = ''
 
 
 def create_filename(srt_language_code: str):
+    """
+    Function to take in filename and output language to create the filename
+
+    :param srt_language_code: output ISO language code
+    :return: output srt filename
+    """
     if len(srt_language_code) == 2:
         output_filename = '{}.{}.srt'.format(FILENAME[:-7], OUTPUT_LANGUAGE_CODE)
     elif len(srt_language_code) == 4:
@@ -45,6 +51,9 @@ def create_filename(srt_language_code: str):
 
 
 def main():
+    """
+    Function to execute the program
+    """
     # Gather Language and Filename
     srt_language = srt.gather_langauge(FILENAME)
     srt_language_code = lang.language_dict[srt_language]
