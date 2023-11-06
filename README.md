@@ -29,3 +29,7 @@ All .srt files need to follow standard naming convention:
 ```bash
 filename.ISO_language_code.srt
 ```
+##### Example:
+```bash
+show.(2020).S01E01.en.srt
+```
